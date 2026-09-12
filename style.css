@@ -28,18 +28,69 @@
 .auth-page{min-height:calc(100vh - 74px);display:flex;align-items:center;justify-content:center;padding:24px 16px;position:relative;overflow:hidden}.auth-card{width:min(520px,100%);position:relative;z-index:2;padding:28px 20px;border-radius:24px;background:rgba(4,12,30,.88);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.12);box-shadow:0 24px 70px rgba(0,0,0,.45)}.auth-logo{font-family:Orbitron,sans-serif;font-weight:800;font-size:28px;letter-spacing:2px;margin-bottom:8px}.auth-logo span{color:#4cc9ff}.auth-card h1{margin:8px 0 6px;font-family:Orbitron,sans-serif}.auth-sub{color:#aebbd2;margin:0 0 18px}.auth-card .field{display:block;margin:12px 0}.auth-card .field span{display:block;font-size:11px;letter-spacing:1.2px;font-weight:800;margin-bottom:6px;color:#8ea4c7}.auth-card input,.auth-card select{width:100%;box-sizing:border-box;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:inherit;border-radius:12px;padding:13px 14px;outline:none}.auth-card input:focus,.auth-card select:focus{border-color:#4cc9ff}.auth-message{padding:10px 12px;border-radius:10px;background:rgba(255,160,70,.12);border:1px solid rgba(255,160,70,.25);margin:10px 0;color:#ffd8ae;font-size:13px}.auth-note{font-size:11px;color:#8ea4c7;line-height:1.5;margin:8px 0 14px}.auth-switch{margin-top:10px}.auth-card button:disabled{opacity:.6}.auth-screen .topbar{display:none}
 
 
-/* FINAL UI HARDENING */
-.auth-screen .bottom-nav{display:none !important}
-.icon-img-btn{display:grid;place-items:center}
-.icon-img-btn img{width:22px;height:22px;object-fit:contain}
-.bottom-nav{height:78px;padding:7px 8px calc(7px + env(safe-area-inset-bottom));grid-template-columns:repeat(4,minmax(0,1fr));box-shadow:0 -12px 30px rgba(0,0,0,.22)}
-.bottom-nav button{position:relative;min-width:0;gap:4px;padding:4px 2px;border-radius:14px;transition:color .18s,background .18s,transform .18s}
-.bottom-nav button:active{transform:scale(.95)}
-.bottom-nav button.active{background:linear-gradient(180deg,rgba(19,71,124,.32),rgba(6,22,47,.18));text-shadow:0 0 16px rgba(39,217,255,.45)}
-.bottom-nav button.active:before{content:"";position:absolute;top:-7px;left:25%;right:25%;height:2px;border-radius:99px;background:var(--cyan);box-shadow:0 0 12px rgba(39,217,255,.85)}
-.bottom-nav .nav-icon{width:28px;height:28px;display:grid;place-items:center;font-size:0}
-.bottom-nav .nav-icon img{width:24px;height:24px;object-fit:contain;opacity:.62;filter:grayscale(.15)}
-.bottom-nav button.active .nav-icon img{opacity:1;filter:none;transform:scale(1.06);filter:drop-shadow(0 0 7px rgba(39,217,255,.45))}
-.bottom-nav small{font-size:9px;font-weight:600;letter-spacing:.15px;white-space:nowrap}
-.profile-panel input[readonly]{opacity:.72;cursor:not-allowed}
-@media(max-width:380px){.bottom-nav small{font-size:8px}.bottom-nav .nav-icon img{width:22px;height:22px}}
+/* =========================================================
+   PJOK ARENA — FINAL UI POLISH
+   Strong separation between artwork and interface.
+   ========================================================= */
+:root{--nav-bg:#031127;--nav-border:rgba(54,126,205,.42);--nav-muted:#7893ba}
+html,body{background:#020817}
+#app{background:#030d20}
+.screen{isolation:isolate}
+.page-backdrop{opacity:.16;filter:saturate(.85) brightness(.52) contrast(1.05)}
+.screen>section{z-index:3}
+
+/* Glass panels: readable first, transparent second. */
+.panel,.quiz-mode,.question-panel,.result-card,.about-card,.notice-card,.game-hero,.lesson,.seph,.rank-row,.pod,.menu-card,.quick-card,.material,.hint-card,.info-banner,.profile-panel,.profile-dashboard{
+  backdrop-filter:blur(14px);
+}
+.panel{background:linear-gradient(145deg,rgba(5,22,50,.97),rgba(3,13,32,.96));border-color:rgba(50,130,211,.48);box-shadow:0 18px 50px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.035)}
+.quiz-mode{background:linear-gradient(145deg,rgba(5,25,55,.98),rgba(3,15,35,.98));border-color:rgba(44,123,201,.5);box-shadow:0 10px 28px rgba(0,0,0,.22)}
+.quiz-mode.selected{background:linear-gradient(145deg,rgba(5,53,91,.98),rgba(4,23,48,.98));border-color:#27d9ff;box-shadow:0 0 0 1px rgba(39,217,255,.12),0 0 28px rgba(39,217,255,.13)}
+.question-panel,.result-card{background:linear-gradient(145deg,rgba(4,20,45,.985),rgba(3,12,30,.985))}
+.seph{background:linear-gradient(145deg,rgba(73,51,10,.98),rgba(17,18,32,.985));box-shadow:0 18px 42px rgba(0,0,0,.38),0 0 25px rgba(255,205,73,.08)}
+.pod{background:linear-gradient(180deg,rgba(13,51,96,.98),rgba(5,18,39,.99));box-shadow:0 14px 32px rgba(0,0,0,.28)}
+.pod.first{background:linear-gradient(180deg,rgba(92,69,18,.99),rgba(21,20,31,.99))}
+.rank-row{background:linear-gradient(90deg,rgba(7,27,57,.98),rgba(4,16,36,.98))}
+
+/* Bottom navigation: never black, always readable. */
+.bottom-nav{
+  height:82px;
+  padding:6px 8px calc(7px + env(safe-area-inset-bottom));
+  display:grid !important;
+  grid-template-columns:repeat(4,1fr);
+  gap:5px;
+  background:linear-gradient(180deg,rgba(3,14,35,.985),rgba(1,8,22,.995));
+  border-top:1px solid var(--nav-border);
+  box-shadow:0 -14px 35px rgba(0,0,0,.42),inset 0 1px 0 rgba(74,168,255,.08);
+}
+.bottom-nav button{
+  position:relative;min-width:0;height:68px;border:1px solid transparent;border-radius:18px;
+  background:transparent;color:var(--nav-muted) !important;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  -webkit-tap-highlight-color:transparent;
+}
+.bottom-nav button::before{content:"";position:absolute;inset:0;border-radius:18px;background:transparent;transition:.2s}
+.bottom-nav button.active{
+  color:#2be3ff !important;
+  background:linear-gradient(180deg,rgba(11,49,89,.94),rgba(5,27,56,.94));
+  border-color:rgba(46,151,226,.26);
+  box-shadow:inset 0 0 28px rgba(23,139,226,.14),0 0 24px rgba(16,127,215,.09);
+  text-shadow:none;
+}
+.bottom-nav button.active::after{content:"";position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);width:38px;height:3px;border-radius:99px;background:#2be3ff;box-shadow:0 0 14px #2be3ff}
+.nav-icon{width:29px;height:29px;display:grid;place-items:center;position:relative;z-index:1}
+.nav-icon svg{width:27px;height:27px;display:block;fill:none;stroke:currentColor;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 5px rgba(71,184,255,.18))}
+.bottom-nav button.active .nav-icon svg{filter:drop-shadow(0 0 8px rgba(39,217,255,.48))}
+.bottom-nav small{position:relative;z-index:1;font-size:10px;font-weight:700;letter-spacing:.1px;color:inherit !important;line-height:1}
+
+/* Buttons: strong contrast everywhere. */
+.btn-primary{color:#fff !important;text-shadow:0 1px 2px rgba(0,0,0,.2);border-color:#6ceaff;min-height:48px}
+.btn-secondary{color:#e8f5ff !important;background:linear-gradient(180deg,rgba(10,37,72,.98),rgba(5,21,45,.98));border-color:#28679e;min-height:46px}
+.icon-btn{color:#c9f5ff !important;background:linear-gradient(180deg,#0b2c56,#061a38);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 6px 20px rgba(0,0,0,.2)}
+
+/* Make page headers and helper text readable over any art. */
+.page-head h2,.quiz-top h2{color:#f7fbff;text-shadow:0 3px 16px rgba(0,0,0,.65)}
+.page-head p,.quiz-top p{color:#9bb8da}
+.kicker{color:#72ddff}
+
+@media(max-width:380px){.bottom-nav{gap:2px}.bottom-nav button{border-radius:15px}.bottom-nav small{font-size:9px}.nav-icon,.nav-icon svg{width:25px;height:25px}}

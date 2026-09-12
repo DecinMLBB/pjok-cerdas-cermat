@@ -11,11 +11,7 @@ const ASSET = {
   noticeBg: "assets/announcement/announcement-bg.jpg",
   aboutBg: "assets/about/about-bg.jpg",
   anime: "assets/pjok-anime.jpg",
-  avatars: "assets/profile/avatar-sheet-100.png",
-  uiHome: "assets/ui/home.svg",
-  uiQuiz: "assets/ui/quiz.svg",
-  uiLeaderboard: "assets/ui/leaderboard.svg",
-  uiProfile: "assets/ui/profile.svg"
+  avatars: "assets/profile/avatar-sheet-100.png"
 };
 
 let sb = null;
@@ -33,7 +29,6 @@ const state = {
   musicOn: localStorage.getItem("pjokMusicOn") !== "0",
   authReady: false,
   onlineAvailable: false,
-  profileAttempts: null,
   history: ["home"]
 };
 
@@ -190,7 +185,7 @@ function authScreen(mode="login", message="") {
   $$(".bottom-nav").forEach(n=>n.style.display="none");
   $("#homeBtn")?.style.setProperty("visibility","hidden");
 }
-function showAppNav(){ document.body.classList.remove("auth-screen"); $$(".bottom-nav").forEach(n=>n.style.removeProperty("display")); }
+function showAppNav(){ document.body.classList.remove("auth-screen"); $$(".bottom-nav").forEach(n=>n.style.display="grid"); }
 async function registerAccount(){
   if(!sb){ toast("Koneksi Supabase belum siap.","warn"); return; }
   const username=$("#authUsername")?.value.trim();
@@ -243,49 +238,13 @@ async function bootAuth(){
   state.user=null; authScreen("login"); initMusic();
 }
 
-async function getProfileAttempts(username) {
-  const local = state.results.filter(r => r && r.username === username);
-  if (!sb) return local;
-  try {
-    const {data:{user}} = await sb.auth.getUser();
-    if (!user) return local;
-    const {data,error} = await sb.from("quiz_attempts")
-      .select("id,score,correct,total,best_combo,xp,mode,category,created_at")
-      .eq("player_id", user.id)
-      .order("created_at", {ascending:false})
-      .limit(30);
-    if (error) throw error;
-    state.profileAttempts = data || [];
-    return (data || []).map(r => ({
-      username, score:r.score, correct:r.correct, total:r.total, bestCombo:r.best_combo, xp:r.xp,
-      updatedAt:r.created_at
-    }));
-  } catch (e) {
-    console.warn("Online profile history unavailable:", e.message || e);
-    return local;
-  }
-}
-
-async function syncQuizAttempt(r, mode, category) {
-  if (!sb) return;
-  try {
-    const {data:{user}} = await sb.auth.getUser();
-    if (!user) return;
-    const {error} = await sb.from("quiz_attempts").insert({
-      player_id:user.id, score:r.score, correct:r.correct, total:r.total,
-      best_combo:r.bestCombo, xp:r.xp, mode:mode || "quick", category:category || "Semua"
-    });
-    if (error) throw error;
-  } catch(e) { console.warn("Quiz history sync skipped:", e.message || e); }
-}
-
-async function profile(editing = false) {
+function profile(editing = false) {
   const u = state.user;
 
   // Setelah registrasi, Profile menjadi dashboard/statistik.
   // Form hanya dibuka melalui tombol EDIT PROFIL.
   if (u && !editing) {
-    const results = await getProfileAttempts(u.username);
+    const results = state.results.filter(r => r && r.username === u.username);
     const totalQuiz = results.length;
     const bestScore = results.reduce((m,r)=>Math.max(m, num(r.score)), 0);
     const totalCorrect = results.reduce((s,r)=>s+num(r.correct), 0);
@@ -349,7 +308,7 @@ async function profile(editing = false) {
         return `<button class="avatar-choice ${i===selected?"selected":""}" data-avatar-index="${i}" aria-label="Avatar ${i}"><img class="avatar-cell" src="${avatarSrc(i)}" width="62" height="62" alt="Avatar ${i}" loading="lazy"><small>${String(i).padStart(2,"0")}</small></button>`;
       }).join("")}</div>
       <div class="form-grid">
-        <label class="field"><span>USERNAME</span><input id="username" maxlength="20" autocomplete="off" value="${esc(u?.username||"")}" placeholder="contoh: denny" ${u ? "readonly" : ""}></label>
+        <label class="field"><span>USERNAME</span><input id="username" maxlength="20" autocomplete="off" value="${esc(u?.username||"")}" placeholder="contoh: denny"></label>
         <label class="field"><span>NAMA LENGKAP</span><input id="fullname" maxlength="60" autocomplete="name" value="${esc(u?.fullName||"")}" placeholder="Nama lengkap"></label>
         <label class="field"><span>KELAS</span><select id="className">${["VII A","VII B","VII C","VII D","VII E","VII F","VII G","VII H"].map(x=>`<option ${u?.className===x?"selected":""}>${x}</option>`).join("")}</select></label>
         <button class="btn-primary" data-action="saveProfile">💾 SIMPAN PROFIL</button>
@@ -368,9 +327,8 @@ async function saveProfile() {
   if(!sb){toast("Supabase belum siap.","warn");return;}
   try{
     const {data:{user}}=await sb.auth.getUser(); if(!user) throw new Error("Sesi login habis. Silakan masuk lagi.");
-    const safeUsername = state.user?.username || username;
-    const updated={username:safeUsername,fullName,className,avatarIndex:Number(state.pendingAvatarIndex||1)};
-    const {error}=await sb.from("players").update({full_name:fullName,class_name:className,avatar_index:updated.avatarIndex,updated_at:new Date().toISOString()}).eq("id",user.id);
+    const updated={username,fullName,className,avatarIndex:Number(state.pendingAvatarIndex||1)};
+    const {error}=await sb.from("players").update({username,full_name:fullName,class_name:className,avatar_index:updated.avatarIndex,updated_at:new Date().toISOString()}).eq("id",user.id);
     if(error) throw error;
     state.user=updated; persistUser(updated); toast("Profil diperbarui.","ok"); setTimeout(profile,220);
   }catch(e){toast(e.message||"Gagal memperbarui profil.","warn");}
@@ -458,7 +416,7 @@ function materialDetail(i) {
 function games() {
   shell(`<section>${pageBackdrop(ASSET.resultBg)}${pageHead("GAME SERU", "Mode latihan PJOK")}
     <div class="game-hero"><span class="kicker">QUICK PLAY</span><h2>QUIZ RUSH</h2><p>10 pertanyaan • 15 detik per soal • combo bonus</p><button class="btn-primary" data-action="start">⚡ MAIN SEKARANG</button></div>
-    <div class="quick-grid game-grid"><button class="quick-card" data-action="startSelectedQuiz"><b>🎯</b><span>CHALLENGE</span><small>Kejar skor tinggi</small></button><button class="quick-card" data-action="leaderboard"><b>🏆</b><span>RANKING</span><small>Lihat posisi kamu</small></button></div>
+    <div class="quick-grid game-grid"><button class="quick-card" data-action="start"><b>🏆</b><span>CHALLENGE</span><small>Kejar skor tinggi</small></button><button class="quick-card" data-action="leaderboard"><b>♛</b><span>RANKING</span><small>Lihat posisi kamu</small></button></div>
   </section>`, "games");
 }
 function notice() {
@@ -536,9 +494,7 @@ async function finishQuiz() {
   const xp=q.correct*20+q.bestCombo*5;
   const result={id:null, username:state.user.username, fullName:state.user.fullName, className:state.user.className, avatarIndex:state.user.avatarIndex||1, score:q.score, correct:q.correct, total:q.items.length, bestCombo:q.bestCombo, xp, updatedAt:Date.now()};
   state.results.unshift(result); state.results=state.results.slice(0,30); saveJSON("pjokArenaResults",state.results);
-  await ensureAuth();
-  await syncQuizAttempt(result, q.mode, q.category);
-  await syncPlayerResult(result);
+  await ensureAuth(); await syncPlayerResult(result);
   state.quiz=null;
   shell(`<section>${pageBackdrop(ASSET.resultBg)}${pageHead("HASIL QUIZ", "Match selesai", "home")}
     <div class="result-card"><div class="result-art"><img src="${ASSET.resultBg}" alt="Hasil quiz"></div><span class="kicker">SKOR KAMU</span><div class="result-score">${fmt(q.score)}</div><div class="result-badge">${q.correct>=8?"🔥 KEREN!":q.correct>=5?"⚡ BAGUS!":"💪 TERUS BERLATIH!"}</div><p>${q.correct}/${q.items.length} benar • XP +${xp} • Best combo ${q.bestCombo}</p><button class="btn-primary" data-action="start">↻ ULANGI QUIZ</button><button class="btn-secondary full" data-action="leaderboard">♛ LIHAT LEADERBOARD</button></div>

@@ -14,16 +14,24 @@
 <body>
 <div id="app">
 <header class="topbar">
-  <button class="icon-btn icon-img-btn" id="homeBtn" aria-label="Home"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 30 32 10l24 20v24H38V39H26v15H8z"/></svg></button>
+  <button class="icon-btn" id="homeBtn" aria-label="Home">⌂</button>
   <div class="brand-mini"><span>PJOK</span> ARENA</div>
   <div class="top-actions"><button class="icon-btn" id="soundBtn" aria-label="Efek suara">♫</button></div>
 </header>
 <main id="screen" class="screen"></main>
 <nav class="bottom-nav" aria-label="Navigasi utama">
-  <button data-nav="home"><span class="nav-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 30 32 10l24 20v24H38V39H26v15H8z"/></svg></span><small>Home</small></button>
-  <button data-nav="quiz"><span class="nav-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="9" y="7" width="46" height="50" rx="6"/><path d="M19 20h26M19 32h26M19 44h15"/></svg></span><small>Quiz</small></button>
-  <button data-nav="leaderboard"><span class="nav-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 52V30h12v22M26 52V16h12v36M42 52V24h12v28"/></svg></span><small>Leaderboard</small></button>
-  <button data-nav="profile"><span class="nav-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="21" r="12"/><path d="M11 56c3-13 12-19 21-19s18 6 21 19"/></svg></span><small>Profile</small></button>
+  <button data-nav="home" aria-label="Home">
+    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M8 30 32 10l24 20v24H38V39H26v15H8z"/></svg></span><small>Home</small>
+  </button>
+  <button data-nav="quiz" aria-label="Quiz">
+    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="9" y="7" width="46" height="50" rx="7"/><path d="M19 20h26M19 32h26M19 44h15"/></svg></span><small>Quiz</small>
+  </button>
+  <button data-nav="leaderboard" aria-label="Leaderboard">
+    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M10 52V30h12v22M26 52V16h12v36M42 52V24h12v28"/></svg></span><small>Leaderboard</small>
+  </button>
+  <button data-nav="profile" aria-label="Profile">
+    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="21" r="12"/><path d="M11 56c3-13 12-19 21-19s18 6 21 19"/></svg></span><small>Profile</small>
+  </button>
 </nav>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
