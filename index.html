@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#020817">
+<meta name="description" content="PJOK ARENA — Cerdas Cermat PJOK SMP Kelas VII">
+<title>PJOK ARENA — SMP Kelas VII</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+<header class="topbar">
+  <button class="icon-btn" id="homeBtn" aria-label="Home">⌂</button>
+  <div class="brand-mini"><span>PJOK</span> ARENA</div>
+  <div class="top-actions"><button class="icon-btn" id="soundBtn" aria-label="Efek suara">♫</button></div>
+</header>
+<main id="screen" class="screen"></main>
+<nav class="bottom-nav" aria-label="Navigasi utama">
+  <button data-nav="home"><span>⌂</span><small>Home</small></button>
+  <button data-nav="quiz"><span>▣</span><small>Quiz</small></button>
+  <button data-nav="leaderboard"><span>♛</span><small>Leaderboard</small></button>
+  <button data-nav="profile"><span>◉</span><small>Profile</small></button>
+</nav>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="questions.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
