@@ -389,28 +389,193 @@ async function refreshOnlineLeaderboard() {
   }
 }
 
+/* ---------- MATERI PJOK ---------- */
+/*
+  DATA MATERI:
+  Kalau nanti mau update materi, cukup ubah bagian MATERI_PJOK di bawah.
+  Tampilan/UI tidak perlu diubah.
+*/
+const MATERI_PJOK = [
+  {
+    bab: "Bola Basket", icon: "🏀", tag: "BAB 1",
+    ringkasan: "Bola basket adalah permainan beregu yang bertujuan memasukkan bola ke keranjang lawan. Permainan membutuhkan kerja sama, penguasaan bola, kecepatan mengambil keputusan, dan sportivitas.",
+    tujuan: "Memahami teknik dasar dan aturan sederhana permainan bola basket.",
+    teknik: [
+      ["Passing", "Mengoper bola kepada teman. Contohnya chest pass, bounce pass, dan overhead pass."],
+      ["Dribbling", "Menggiring bola dengan memantulkannya ke lantai. Dribble rendah membantu melindungi bola dari lawan."],
+      ["Pivot", "Memutar badan dengan satu kaki tetap menjadi poros untuk melindungi atau mencari ruang operan."],
+      ["Shooting", "Melempar bola menuju ring untuk memperoleh angka."],
+      ["Rebound", "Mengambil kembali bola yang gagal masuk ke ring."]
+    ],
+    aturan: ["Satu tim memainkan 5 pemain di lapangan.", "Bola harus dimainkan sesuai aturan dribble, passing, dan langkah.", "Pelanggaran seperti traveling dan foul dapat merugikan tim."],
+    inti: ["Kuasai passing dan dribbling.", "Gunakan pivot untuk melindungi bola.", "Kerja sama dan sportivitas sama pentingnya dengan mencetak angka."]
+  },
+  {
+    bab: "Bola Voli", icon: "🏐", tag: "BAB 2",
+    ringkasan: "Bola voli adalah permainan beregu yang dimainkan dengan melewatkan bola melewati net dan berusaha menjatuhkannya di daerah permainan lawan. Penguasaan passing, servis, serangan, dan pertahanan menjadi dasar permainan.",
+    tujuan: "Memahami teknik dasar bola voli dan fungsi setiap gerakan.",
+    teknik: [
+      ["Passing bawah", "Menggunakan kedua lengan yang dirapatkan untuk menerima atau mengarahkan bola."],
+      ["Passing atas", "Menggunakan ujung jari-jari untuk mengontrol bola dan memberikan umpan."],
+      ["Servis", "Pukulan awal untuk memulai permainan atau rally."],
+      ["Spike", "Pukulan serangan keras dan menukik ke daerah lawan."],
+      ["Block", "Usaha membendung serangan lawan di dekat net."]
+    ],
+    aturan: ["Satu regu terdiri dari 6 pemain di lapangan.", "Bola diarahkan melewati net dan tidak boleh jatuh di daerah sendiri.", "Kerja sama, komunikasi, dan penempatan bola sangat penting."]
+    ,
+    inti: ["Passing untuk mengontrol bola.", "Servis untuk memulai rally.", "Spike untuk menyerang dan block untuk bertahan."]
+  },
+  {
+    bab: "Permainan Kasti", icon: "⚾", tag: "BAB 3",
+    ringkasan: "Kasti merupakan permainan bola kecil beregu yang menggabungkan kemampuan memukul, melempar, menangkap, dan berlari. Permainan menuntut kerja sama, kekompakan, ketangkasan, dan kecepatan.",
+    tujuan: "Mengenal teknik dasar permainan kasti dan pentingnya kerja sama regu.",
+    teknik: [
+      ["Melempar", "Bola dapat dilempar melambung, mendatar, atau menyusur tanah sesuai kebutuhan permainan."],
+      ["Menangkap", "Tangan dipersiapkan mengikuti arah datangnya bola agar bola dapat dikuasai dengan aman."],
+      ["Memukul", "Pemukul mengarahkan bola ke tempat yang sulit dijangkau regu penjaga."],
+      ["Berlari", "Pelari bergerak cepat menuju tiang atau tempat aman sesuai aturan permainan."]
+    ],
+    aturan: ["Permainan terdiri dari regu pemukul dan regu penjaga.", "Regu pemukul berusaha mendapatkan kesempatan berlari dan memperoleh nilai.", "Regu penjaga berusaha menangkap bola dan mematikan pelari sesuai aturan."]
+    ,
+    inti: ["Ketepatan lemparan dan tangkapan sangat penting.", "Pukul bola dengan terarah.", "Komunikasi antarpemain membuat regu lebih efektif."]
+  },
+  {
+    bab: "Pencak Silat", icon: "🥋", tag: "BAB 4",
+    ringkasan: "Pencak silat adalah seni bela diri yang mengembangkan keterampilan gerak, pertahanan, serangan, disiplin, dan sikap sportif. Latihan harus dilakukan dengan teknik yang benar dan mengutamakan keselamatan.",
+    tujuan: "Memahami sikap dasar, gerakan serangan, pertahanan, dan nilai-nilai dalam pencak silat.",
+    teknik: [
+      ["Kuda-kuda", "Posisi kaki sebagai dasar keseimbangan dan kesiapan melakukan gerakan."],
+      ["Sikap pasang", "Sikap siap untuk menghadapi lawan, menyerang, atau bertahan."],
+      ["Pukulan", "Gerakan serangan menggunakan tangan dengan sasaran dan teknik yang terkontrol."],
+      ["Tendangan", "Gerakan serangan menggunakan kaki yang dilakukan dengan keseimbangan dan kontrol."],
+      ["Tangkisan", "Gerakan untuk membendung atau mengalihkan serangan lawan."]
+    ],
+    aturan: ["Latihan dilakukan dengan pengawasan dan kontrol gerakan.", "Hindari serangan keras pada teman saat latihan teknik.", "Kedisiplinan, pengendalian diri, dan sportivitas harus dijaga."]
+    ,
+    inti: ["Keseimbangan berasal dari kuda-kuda yang baik.", "Utamakan kontrol gerakan.", "Pencak silat bukan sekadar menyerang, tetapi juga disiplin dan membela diri."]
+  },
+  {
+    bab: "Atletik — Lari Jarak Pendek", icon: "🏃", tag: "BAB 5",
+    ringkasan: "Lari jarak pendek atau sprint adalah nomor atletik yang mengutamakan kecepatan dari start sampai garis finish. Pelari perlu memiliki reaksi cepat, koordinasi, kekuatan, dan teknik berlari yang efisien.",
+    tujuan: "Memahami teknik start, fase berlari, dan memasuki garis finish.",
+    teknik: [
+      ["Start jongkok", "Start yang digunakan pada lari jarak pendek untuk menghasilkan dorongan awal yang kuat."],
+      ["Fase akselerasi", "Tubuh secara bertahap meningkatkan kecepatan setelah start."],
+      ["Teknik berlari", "Ayunan lengan dan langkah kaki harus terkoordinasi dengan posisi badan yang sesuai."],
+      ["Finish", "Pelari mempertahankan kecepatan sampai melewati garis finish dan tidak berhenti terlalu awal."]
+    ],
+    aturan: ["Tetap berada pada lintasan sesuai ketentuan perlombaan.", "Reaksi terhadap aba-aba start harus diperhatikan.", "Kecepatan dipertahankan sampai melewati garis finish."]
+    ,
+    inti: ["Start yang baik membantu memperoleh kecepatan awal.", "Koordinasikan lengan dan kaki.", "Jangan mengurangi kecepatan sebelum garis finish."]
+  },
+  {
+    bab: "Senam Lantai", icon: "🤸", tag: "BAB 6",
+    ringkasan: "Senam lantai merupakan aktivitas senam yang dilakukan di atas matras dengan berbagai gerakan tubuh. Gerakan membutuhkan kelentukan, kekuatan, keseimbangan, koordinasi, dan keberanian yang terkontrol.",
+    tujuan: "Mengenal gerakan dasar senam lantai dan memahami keselamatan saat berlatih.",
+    teknik: [
+      ["Guling depan", "Gerakan menggulingkan badan ke depan dengan tumpuan yang benar dan tubuh dikontrol."],
+      ["Guling belakang", "Gerakan menggulingkan badan ke belakang dengan posisi tubuh dan tangan yang tepat."],
+      ["Sikap lilin", "Posisi badan terlentang dengan kaki diangkat ke atas dan tubuh ditopang menggunakan tangan."],
+      ["Keseimbangan", "Kemampuan mempertahankan posisi tubuh agar tetap stabil selama melakukan gerakan."]
+    ],
+    aturan: ["Gunakan matras dan area latihan yang aman.", "Lakukan pemanasan sebelum latihan.", "Gerakan baru sebaiknya dipelajari dengan bantuan guru atau pengawasan yang tepat."]
+    ,
+    inti: ["Keselamatan adalah prioritas.", "Gunakan teknik sesuai kemampuan.", "Kekuatan, kelentukan, dan keseimbangan perlu dilatih bertahap."]
+  },
+  {
+    bab: "Gerak Berirama", icon: "🎵", tag: "BAB 7",
+    ringkasan: "Gerak berirama adalah rangkaian gerakan tubuh yang dilakukan mengikuti irama musik atau hitungan. Aktivitas ini melatih koordinasi, kelentukan, keseimbangan, ketepatan gerak, dan kebugaran.",
+    tujuan: "Memahami hubungan antara gerak tubuh, langkah, koordinasi, dan irama.",
+    teknik: [
+      ["Langkah kaki", "Gerakan kaki dilakukan mengikuti hitungan atau ketukan secara teratur."],
+      ["Gerak tangan", "Gerakan tangan diselaraskan dengan langkah dan arah gerak tubuh."],
+      ["Koordinasi", "Kemampuan menyatukan gerak kaki, tangan, dan tubuh agar rangkaian terlihat harmonis."],
+      ["Irama", "Ketepatan gerakan mengikuti ketukan atau hitungan yang digunakan."]
+    ],
+    aturan: ["Ikuti hitungan atau irama dengan konsisten.", "Jaga jarak dengan teman saat bergerak.", "Sesuaikan intensitas latihan dengan kemampuan tubuh."]
+    ,
+    inti: ["Dengarkan irama.", "Koordinasikan tangan dan kaki.", "Lakukan gerakan secara teratur dan percaya diri."]
+  },
+  {
+    bab: "Kebugaran Jasmani", icon: "💪", tag: "BAB 8",
+    ringkasan: "Kebugaran jasmani adalah kemampuan tubuh melakukan aktivitas sehari-hari secara efektif tanpa mengalami kelelahan berlebihan. Kebugaran dibangun melalui latihan teratur, pola hidup sehat, istirahat, dan asupan yang baik.",
+    tujuan: "Mengenal komponen kebugaran dan contoh latihan sederhana.",
+    teknik: [
+      ["Kekuatan", "Kemampuan otot menghasilkan tenaga. Contoh latihan: push-up atau squat."],
+      ["Daya tahan", "Kemampuan tubuh melakukan aktivitas dalam waktu relatif lama. Contohnya latihan lari atau aktivitas aerobik."],
+      ["Kecepatan", "Kemampuan melakukan gerakan dalam waktu singkat."],
+      ["Kelentukan", "Kemampuan persendian bergerak dengan ruang gerak yang baik."],
+      ["Kelincahan", "Kemampuan mengubah arah dan posisi tubuh dengan cepat dan terkontrol."]
+    ],
+    aturan: ["Lakukan pemanasan dan pendinginan.", "Latihan dilakukan bertahap sesuai kemampuan.", "Jaga hidrasi, pola makan, dan waktu istirahat."]
+    ,
+    inti: ["Latihan harus teratur.", "Kenali kemampuan tubuh sendiri.", "Kebugaran bukan hanya soal kuat, tetapi juga sehat dan bugar."]
+  }
+];
+
 function materials() {
-  const topics = [
-    ["Bola Basket","Passing, dribbling, pivot, shooting, rebound","Bab 1"],
-    ["Bola Voli","Passing bawah, passing atas, servis, spike, block","Bab 2"],
-    ["Permainan Kasti","Teknik melempar, menangkap, memukul, berlari","Bab 3"],
-    ["Pencak Silat","Sikap dasar, serangan, pertahanan, keselamatan","Bab 4"],
-    ["Atletik","Lari cepat dan teknik dasar atletik","Bab 5"],
-    ["Senam","Gerak dasar dan keselamatan senam","Bab 6"],
-    ["Gerak Berirama","Gerak mengikuti irama dan koordinasi","Bab 7"],
-    ["Kebugaran Jasmani","Komponen kebugaran dan latihan sederhana","Bab 8"]
-  ];
   shell(`<section>
     ${pageBackdrop(ASSET.quizBg)}
-    ${pageHead("MATERI PJOK", "Fase D • Kelas VII")}
-    <div class="info-banner"><b>📚 RINGKASAN ARENA</b><span>Materi mengikuti topik perangkat ajar PJOK kelas VII.</span></div>
-    <div class="material-list">${topics.map((t,i)=>`<button class="material" data-material="${i}"><div class="material-no">0${i+1}</div><div><b>${t[0]}</b><small>${t[1]}</small><em>${t[2]}</em></div><span>›</span></button>`).join("")}</div>
+    ${pageHead("MATERI PJOK", "Ringkasan tiap bab • Kelas VII")}
+    <div class="info-banner material-intro"><b>📚 BELAJAR SEBELUM BERTANDING</b><span>Pilih bab untuk membaca ringkasan, teknik dasar, aturan sederhana, dan poin yang wajib diingat.</span></div>
+    <div class="material-list">
+      ${MATERI_PJOK.map((t,i)=>`
+        <button class="material material-enhanced" data-material="${i}">
+          <div class="material-no">${String(i+1).padStart(2,"0")}</div>
+          <div class="material-icon">${t.icon}</div>
+          <div class="material-copy"><b>${esc(t.bab)}</b><small>${esc(t.ringkasan)}</small><em>${t.tag} • ${t.teknik.length} materi inti</em></div>
+          <span>›</span>
+        </button>`).join("")}
+    </div>
   </section>`, "materials");
 }
+
 function materialDetail(i) {
-  const cats=["Bola Basket","Bola Voli","Permainan Kasti","Pencak Silat","Atletik — Lari Jarak Pendek","Senam Lantai","Gerak Berirama","Kebugaran Jasmani"];
-  const qs = (typeof QUESTIONS !== "undefined" ? QUESTIONS : []).filter(q=>q.c===cats[i]);
-  shell(`<section>${pageBackdrop(ASSET.quizBg)}${pageHead(cats[i] || "MATERI", "Ringkasan PJOK kelas VII")}<div class="panel lesson"><div class="lesson-badge">BAB ${i+1}</div><h3>${esc(cats[i])}</h3><p>Gunakan materi ini sebagai pengantar sebelum mengerjakan quiz. Fokus pada teknik dasar, tujuan gerakan, aturan sederhana, dan keselamatan.</p>${qs.slice(0,5).map(q=>`<div class="lesson-q"><b>•</b><span>${esc(q.q)}</span></div>`).join("") || `<div class="lesson-q"><b>•</b><span>Topik ini tersedia sebagai bagian dari materi PJOK kelas VII.</span></div>`}</div></section>`, "materials");
+  const t = MATERI_PJOK[i];
+  if (!t) { materials(); return; }
+  const qs = (typeof QUESTIONS !== "undefined" ? QUESTIONS : []).filter(q=>q.c===t.bab);
+  shell(`<section>
+    ${pageBackdrop(ASSET.quizBg)}
+    ${pageHead(t.bab, `${t.tag} • Ringkasan PJOK kelas VII`)}
+    <div class="lesson lesson-modern">
+      <div class="lesson-hero">
+        <div class="lesson-icon">${t.icon}</div>
+        <div><span class="lesson-badge">${t.tag}</span><h3>${esc(t.bab)}</h3></div>
+      </div>
+
+      <div class="lesson-section">
+        <div class="lesson-section-title">📖 RINGKASAN</div>
+        <p>${esc(t.ringkasan)}</p>
+      </div>
+
+      <div class="lesson-section">
+        <div class="lesson-section-title">🎯 TUJUAN BELAJAR</div>
+        <p>${esc(t.tujuan)}</p>
+      </div>
+
+      <div class="lesson-section">
+        <div class="lesson-section-title">⚡ TEKNIK / MATERI INTI</div>
+        <div class="technique-list">
+          ${t.teknik.map(x=>`<div class="technique-row"><b>${esc(x[0])}</b><span>${esc(x[1])}</span></div>`).join("")}
+        </div>
+      </div>
+
+      <div class="lesson-section">
+        <div class="lesson-section-title">📌 ATURAN & KESELAMATAN</div>
+        <ul class="lesson-bullets">${t.aturan.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+      </div>
+
+      <div class="lesson-section lesson-highlight">
+        <div class="lesson-section-title">🧠 WAJIB DIINGAT</div>
+        <ul class="lesson-bullets">${t.inti.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+      </div>
+
+      <div class="lesson-quiz-box">
+        <div><b>Siap menguji materi ini?</b><small>${qs.length} soal tersedia untuk bab ini.</small></div>
+        <button class="btn-primary" data-action="startMaterialQuiz" data-material-index="${i}">🎯 QUIZ BAB INI</button>
+      </div>
+    </div>
+  </section>`, "materials");
 }
 
 function games() {
@@ -588,6 +753,7 @@ document.addEventListener("click", e => {
   }
   else if(a==="leaderboard") leaderboard();
   else if(a==="materials") materials();
+  else if(a==="startMaterialQuiz"){ const idx=Number(b.dataset.materialIndex); const topic=MATERI_PJOK[idx]?.bab; if(topic) startQuiz("chapter",topic); }
   else if(a==="games") games();
   else if(a==="notice") notice();
   else if(a==="about") about();

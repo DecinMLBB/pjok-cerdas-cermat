@@ -75,4 +75,46 @@ const QUESTIONS=[
 {c:'Kebugaran Jasmani',q:'Gerakan mencium lutut dari posisi duduk dengan kaki lurus bertujuan melatih...',o:['Kekuatan otot perut','Kelenturan otot punggung bawah dan paha belakang','Keseimbangan','Daya tahan jantung'],a:1,e:'Jawaban: kelenturan otot punggung bawah dan paha belakang.',d:2,sourceRef:'Bab 8'},
 {c:'Kebugaran Jasmani',q:'Manfaat memiliki tingkat kebugaran jasmani yang baik adalah...',o:['Tubuh menjadi kaku','Mudah merasa lelah','Berisiko lebih rendah terhadap penyakit','Sulit berkonsentrasi'],a:2,e:'Jawaban: berisiko lebih rendah terhadap penyakit.',d:1,sourceRef:'Bab 8'},
 {c:'Kebugaran Jasmani',q:'Indeks Massa Tubuh (IMT) digunakan untuk mengetahui...',o:['Tingkat kekuatan otot','Tingkat kecepatan lari','Status gizi seseorang berdasarkan perbandingan berat dan tinggi badan','Tingkat kelenturan tubuh'],a:2,e:'Jawaban: status gizi berdasarkan perbandingan berat dan tinggi badan.',d:1,sourceRef:'Bab 8'}
+,
+{c:'Bola Basket',q:'Teknik membawa bola dengan memantulkannya ke lantai disebut...',o:['Passing','Dribbling','Pivot','Rebound'],a:1,e:'Jawaban: Dribbling.',d:1,sourceRef:'Bab 1'},
+{c:'Bola Basket',q:'Gerakan memasukkan bola ke keranjang dengan satu atau dua tangan disebut...',o:['Shooting','Passing','Pivot','Rebound'],a:0,e:'Jawaban: Shooting.',d:1,sourceRef:'Bab 1'},
+{c:'Bola Basket',q:'Operan dari atas kepala dalam permainan bola basket disebut...',o:['Chest Pass','Bounce Pass','Overhead Pass','Baseball Pass'],a:2,e:'Jawaban: Overhead Pass.',d:1,sourceRef:'Bab 1'},
+{c:'Bola Basket',q:'Setelah menangkap bola, pemain harus menjaga keseimbangan dengan...',o:['Kedua kaki dan posisi siap','Menutup mata','Membelakangi lawan','Melompat terus'],a:0,e:'Jawaban: kedua kaki dan posisi siap.',d:1,sourceRef:'Bab 1'},
+
+{c:'Bola Voli',q:'Teknik menerima bola yang datang rendah biasanya menggunakan...',o:['Passing bawah','Passing atas','Smash','Block'],a:0,e:'Jawaban: Passing bawah.',d:1,sourceRef:'Bab 2'},
+{c:'Bola Voli',q:'Teknik mengoper bola dengan ujung jari-jari di atas kepala disebut...',o:['Passing bawah','Passing atas','Servis','Block'],a:1,e:'Jawaban: Passing atas.',d:1,sourceRef:'Bab 2'},
+{c:'Bola Voli',q:'Tujuan utama melakukan servis adalah...',o:['Memulai permainan dan mengirim bola ke daerah lawan','Menghentikan permainan','Mengganti pemain','Mengambil bola'],a:0,e:'Jawaban: memulai permainan dan mengirim bola ke daerah lawan.',d:1,sourceRef:'Bab 2'},
+{c:'Bola Voli',q:'Pemain melakukan block untuk...',o:['Membendung serangan lawan','Melakukan servis','Menggiring bola','Menghentikan waktu'],a:0,e:'Jawaban: membendung serangan lawan.',d:1,sourceRef:'Bab 2'},
+
+{c:'Permainan Kasti',q:'Permainan kasti termasuk permainan bola...',o:['Besar','Kecil','Air','Musim dingin'],a:1,e:'Jawaban: bola kecil.',d:1,sourceRef:'Bab 3'},
+{c:'Permainan Kasti',q:'Alat utama yang digunakan untuk memukul bola dalam permainan kasti adalah...',o:['Raket','Tongkat pemukul','Net','Peluit'],a:1,e:'Jawaban: tongkat pemukul.',d:1,sourceRef:'Bab 3'},
+{c:'Permainan Kasti',q:'Setelah memukul bola, pemain berusaha...',o:['Berlari menuju tiang hinggap','Duduk di lapangan','Keluar lapangan','Melempar tongkat ke lawan'],a:0,e:'Jawaban: berlari menuju tiang hinggap.',d:1,sourceRef:'Bab 3'},
+{c:'Permainan Kasti',q:'Salah satu keterampilan dasar dalam permainan kasti adalah...',o:['Menendang bola','Melempar dan menangkap bola','Menyundul bola','Berenang'],a:1,e:'Jawaban: melempar dan menangkap bola.',d:1,sourceRef:'Bab 3'},
+
+{c:'Pencak Silat',q:'Sikap dasar untuk menjaga keseimbangan dan kesiapan dalam pencak silat disebut...',o:['Kuda-kuda','Start','Pivot','Servis'],a:0,e:'Jawaban: kuda-kuda.',d:1,sourceRef:'Bab 4'},
+{c:'Pencak Silat',q:'Gerakan menahan atau menghindari serangan lawan disebut...',o:['Tangkisan','Shooting','Passing','Dribbling'],a:0,e:'Jawaban: tangkisan.',d:1,sourceRef:'Bab 4'},
+{c:'Pencak Silat',q:'Gerakan menyerang menggunakan kaki dalam pencak silat disebut...',o:['Tendangan','Passing','Rebound','Start'],a:0,e:'Jawaban: tendangan.',d:1,sourceRef:'Bab 4'},
+{c:'Pencak Silat',q:'Sikap pasang bertujuan untuk...',o:['Kesiapan menyerang atau bertahan','Beristirahat','Mengakhiri latihan','Mengambil bola'],a:0,e:'Jawaban: kesiapan menyerang atau bertahan.',d:1,sourceRef:'Bab 4'},
+
+{c:'Atletik — Lari Jarak Pendek',q:'Lari jarak pendek sering disebut juga...',o:['Sprint','Maraton','Jalan santai','Estafet air'],a:0,e:'Jawaban: sprint.',d:1,sourceRef:'Bab 5'},
+{c:'Atletik — Lari Jarak Pendek',q:'Start yang digunakan dalam lari jarak pendek adalah...',o:['Start berdiri','Start jongkok','Start duduk','Start melayang'],a:1,e:'Jawaban: start jongkok.',d:1,sourceRef:'Bab 5'},
+{c:'Atletik — Lari Jarak Pendek',q:'Saat berlari cepat, pandangan sebaiknya diarahkan...',o:['Ke depan','Ke belakang','Ke bawah terus','Ke samping terus'],a:0,e:'Jawaban: ke depan.',d:1,sourceRef:'Bab 5'},
+{c:'Atletik — Lari Jarak Pendek',q:'Tujuan utama pelari dalam perlombaan adalah...',o:['Mencapai garis finish secepat mungkin','Berhenti di tengah lintasan','Berjalan santai','Menunggu lawan'],a:0,e:'Jawaban: mencapai garis finish secepat mungkin.',d:1,sourceRef:'Bab 5'},
+
+{c:'Kebugaran Jasmani',q:'Kemampuan tubuh melakukan aktivitas tanpa cepat lelah disebut...',o:['Kebugaran jasmani','Kelaparan','Kecepatan membaca','Konsentrasi'],a:0,e:'Jawaban: kebugaran jasmani.',d:1,sourceRef:'Bab 6'},
+{c:'Kebugaran Jasmani',q:'Kemampuan otot untuk melakukan kerja disebut...',o:['Kekuatan','Kelentukan','Keseimbangan','Koordinasi'],a:0,e:'Jawaban: kekuatan.',d:1,sourceRef:'Bab 6'},
+{c:'Kebugaran Jasmani',q:'Kemampuan persendian bergerak secara luas disebut...',o:['Kelentukan','Kekuatan','Kecepatan','Daya ledak'],a:0,e:'Jawaban: kelentukan.',d:1,sourceRef:'Bab 6'},
+
+{c:'Senam Lantai',q:'Gerakan menggulingkan badan ke depan disebut...',o:['Guling depan','Kayang','Sikap lilin','Handstand'],a:0,e:'Jawaban: guling depan.',d:1,sourceRef:'Bab 7'},
+{c:'Senam Lantai',q:'Pada guling belakang, arah gerakan badan adalah...',o:['Ke belakang','Ke depan','Ke samping kanan','Ke atas tanpa berguling'],a:0,e:'Jawaban: ke belakang.',d:1,sourceRef:'Bab 7'},
+{c:'Senam Lantai',q:'Sikap lilin dilakukan dengan posisi kedua kaki...',o:['Lurus ke atas','Ditekuk ke samping','Menyentuh lantai di depan','Berlari'],a:0,e:'Jawaban: lurus ke atas.',d:1,sourceRef:'Bab 7'},
+{c:'Senam Lantai',q:'Matras digunakan dalam senam lantai terutama untuk...',o:['Mengurangi risiko cedera','Mempercepat gerakan','Mengganti pakaian','Menambah berat badan'],a:0,e:'Jawaban: mengurangi risiko cedera.',d:1,sourceRef:'Bab 7'},
+{c:'Senam Lantai',q:'Sebelum melakukan senam lantai, sebaiknya melakukan...',o:['Pemanasan','Tidur','Makan berlebihan','Berlari keluar lapangan'],a:0,e:'Jawaban: pemanasan.',d:1,sourceRef:'Bab 7'},
+
+{c:'Gerak Berirama',q:'Gerak berirama dilakukan dengan mengikuti...',o:['Irama atau musik','Arah angin','Suara kendaraan','Warna pakaian'],a:0,e:'Jawaban: irama atau musik.',d:1,sourceRef:'Bab 8'},
+{c:'Gerak Berirama',q:'Salah satu unsur penting dalam gerak berirama adalah...',o:['Keluwesan gerak','Kekuatan memukul','Kemampuan menangkap bola','Kecepatan melempar'],a:0,e:'Jawaban: keluwesan gerak.',d:1,sourceRef:'Bab 8'},
+{c:'Gerak Berirama',q:'Gerakan langkah kaki dalam gerak berirama harus disesuaikan dengan...',o:['Irama','Ukuran sepatu','Warna lapangan','Jumlah penonton'],a:0,e:'Jawaban: irama.',d:1,sourceRef:'Bab 8'},
+{c:'Gerak Berirama',q:'Tujuan melakukan pemanasan sebelum aktivitas gerak berirama adalah...',o:['Mempersiapkan tubuh dan mengurangi risiko cedera','Membuat tubuh kaku','Menghentikan latihan','Mengurangi keseimbangan'],a:0,e:'Jawaban: mempersiapkan tubuh dan mengurangi risiko cedera.',d:1,sourceRef:'Bab 8'},
+{c:'Gerak Berirama',q:'Sikap tubuh saat melakukan gerak berirama sebaiknya...',o:['Tegap dan terkontrol','Kaku tanpa bergerak','Membungkuk terus','Memejamkan mata'],a:0,e:'Jawaban: tegap dan terkontrol.',d:1,sourceRef:'Bab 8'},
+{c:'Gerak Berirama',q:'Koordinasi dalam gerak berirama berarti kemampuan menggabungkan...',o:['Gerakan tubuh secara selaras','Makanan dan minuman','Bola dan raket','Sepatu dan kaus kaki'],a:0,e:'Jawaban: gerakan tubuh secara selaras.',d:1,sourceRef:'Bab 8'}
 ];
